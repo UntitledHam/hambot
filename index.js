@@ -33,6 +33,7 @@ for (const folder of commandFolders) {
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+	console.log('What is my purpose?\nYou are a discord bot\nOh my god....')
 });
 
 // Listens to commands.

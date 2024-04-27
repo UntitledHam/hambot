@@ -10,12 +10,21 @@ async function getRandomInt(min, max) {
     return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 
-async function runGame() {
-    let player_score = 0
-    let op_score = 0
+async function startGame() {
+    let player_score = await getRandomInt(1,10) + await getRandomInt(1,10);
+    let op_score = await getRandomInt(1,10) + await getRandomInt(1,10);
 
-    await draw(player_score)
+    return [player_score, op_score];
 }
+
+async function checkScore(score){ 
+    if (score > 21) {
+        return false;
+    }
+    return true;
+}
+
+
 async function draw(score) {
     // Gets a card between 2 and 11.
     card_value = await getRandomInt(2,11)
@@ -28,6 +37,7 @@ async function draw(score) {
     return score;
 
 }
+//runGame()
 
 
 module.exports = {
@@ -35,6 +45,12 @@ module.exports = {
         .setName('blackjack')
         .setDescription("It's just blackjack stupid"),
     async execute(interaction) {
+        let score = await startGame();
+        let player_score = score[0];
+        let op_score = score[1]
+
+
+
         const draw = new ButtonBuilder()
             .setCustomId('hit')
             .setLabel('Hit')
@@ -49,7 +65,7 @@ module.exports = {
             .addComponents(stand,draw);
 
             const response = await interaction.reply({
-                content: `Blackjack WIP`,
+                content: `Player: ${player_score}\nOp Score: ${op_score}`,
                 components: [row],
             });
             
