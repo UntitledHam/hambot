@@ -2,8 +2,8 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('get_user')
-        .setDescription('Returns yourself.'),
+        .setName('make_account')
+        .setDescription('Makes a bank account.'),
     async execute (interaction) {
         await interaction.reply({ content: `${await interaction.user}`, ephemeral: true });
     }
