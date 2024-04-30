@@ -79,6 +79,7 @@ module.exports = {
                         components: [row] 
                     });
                 } else if (confirmation.customId === 'hit') {
+                    
                     await confirmation.update({
                         content: 'Hit :3', 
                         components: [row] });
