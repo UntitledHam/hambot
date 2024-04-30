@@ -1,4 +1,3 @@
-const { channel } = require('diagnostics_channel');
 const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
